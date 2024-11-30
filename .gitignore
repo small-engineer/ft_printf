@@ -1,20 +1,27 @@
+# バイナリファイルとビルド成果物
+build/
 *.o
 *.a
+*.so
+*.out
+*.exe
 
-/obj/
+# コンパイル関連
+compile_commands.json
+Makefile
+.ccls-cache/
 
-*~
+# IDEやエディタの設定ファイル
+.vscode/
+.cache/
+
+# OS依存ファイル
+.DS_Store
+Thumbs.db
+
+# その他
 *.swp
 *.swo
 *.bak
-
-.DS_Store
-
-*.log
-
-*.d
-
-tags
-TAGS
 *.tmp
-*.out
+
