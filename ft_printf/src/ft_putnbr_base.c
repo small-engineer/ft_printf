@@ -6,48 +6,73 @@
 /*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:36:55 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 04:41:51 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 06:01:19 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base(unsigned long n, const char *base)
+static int	is_valid_base(const char *base)
 {
-	int				len;
-	unsigned int	base_len;
-	char			c;
+	const char	*p_1;
+	const char	*p_2;
 
-	len = 0;
+	if (!base || ft_strlen(base) < 2)
+		return (0);
+	p_1 = base;
+	while (*p_1)
+	{
+		if (*p_1 == '+' || *p_1 == '-')
+			return (0);
+		p_2 = p_1 + 1;
+		while (*p_2)
+		{
+			if (*p_1 == *p_2)
+				return (0);
+			p_2++;
+		}
+		p_1++;
+	}
+	return (1);
+}
+
+static int	ft_putnbr_base(unsigned long n, const char *base)
+{
+	unsigned int	base_len;
+	char			buf[17];
+	char			*p_buf;
+	int				written;
+
+	if (!is_valid_base(base))
+		return (-1);
 	base_len = ft_strlen(base);
-	if (n >= base_len)
+	written = 0;
+	p_buf = buf;
+	while (n >= base_len)
 	{
-		len += ft_putnbr_base(n / base_len, base);
-		c = base[n % base_len];
-		if (write(1, &c, 1) == -1)
-			return (-1);
-		len++;
+		*p_buf++ = base[n % base_len];
+		n /= base_len;
 	}
-	else
+	*p_buf++ = base[n];
+	while (p_buf != buf)
 	{
-		c = base[n];
-		if (write(1, &c, 1) == -1)
+		if (write(1, --p_buf, 1) == -1)
 			return (-1);
-		len++;
+		written++;
 	}
-	return (len);
+	return (written);
 }
 
 int	ft_print_pointer(va_list *args)
 {
-	unsigned long	ptr;
+	unsigned long	p;
 	int				len;
 
 	len = 0;
-	ptr = (unsigned long)va_arg(*args, void *);
+	p = (unsigned long)va_arg(*args, void *);
 	if (write(1, "0x", 2) == -1)
 		return (-1);
-	len += 2 + ft_putnbr_base(ptr, "0123456789abcdef");
+	len += 2 + ft_putnbr_base(p, "0123456789abcdef");
 	return (len);
 }
 
@@ -65,12 +90,4 @@ int	ft_print_hex_uppercase(va_list *args)
 
 	n = va_arg(*args, unsigned int);
 	return (ft_putnbr_base(n, "0123456789ABCDEF"));
-}
-
-int	ft_print_percent(va_list *args)
-{
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
 }

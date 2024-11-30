@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:35:28 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 05:12:09 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 08:44:25 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 static int	ft_format(const char *fmt, va_list *args)
 {
-	static int	(*fmt_func[])(va_list *) = {
-		&ft_putchar, &ft_putstr,
-		ft_print_pointer, &ft_print_int, &ft_print_int, &ft_print_unsigned,
-		&ft_print_hex_lowercase, &ft_print_hex_uppercase, &ft_print_percent
+	int					i;
+	static t_fmt_map	fmt_map[] = {
+	{'c', &ft_putchar}, {'s', &ft_putstr},
+	{'p', &ft_print_pointer}, {'d', &ft_print_int},
+	{'i', &ft_print_int}, {'u', &ft_print_unsigned},
+	{'x', &ft_print_hex_lowercase},	{'X', &ft_print_hex_uppercase},
+	{'%', &ft_print_percent}, {'\0', NULL}
 	};
-	const char	p_fmt_chars[] = "cspdiuxX%";
-	int			p_fmt_len;
 
-	p_fmt_len = 0;
-	while (p_fmt_chars[p_fmt_len])
+	i = 0;
+	if (!fmt)
+		return (-1);
+	while (fmt_map[i].fmt_char != '\0')
 	{
-		if (*fmt == p_fmt_chars[p_fmt_len])
-			return ((*fmt_func[p_fmt_len])(args));
-		p_fmt_len++;
+		if (*fmt == fmt_map[i].fmt_char)
+			return (fmt_map[i].fmt_func(args));
+		i++;
 	}
 	return (write(1, fmt, 1));
 }

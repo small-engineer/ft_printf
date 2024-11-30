@@ -6,7 +6,7 @@
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 00:37:27 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 05:25:14 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,12 @@ size_t	ft_strlen(const char *s)
 	while (s[len] != '\0')
 		len++;
 	return (len);
+}
+
+int	ft_print_percent(va_list *args)
+{
+	(void)args;
+	if (write(1, "%", 1) == -1)
+		return (-1);
+	return (1);
 }

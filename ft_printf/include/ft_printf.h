@@ -6,7 +6,7 @@
 /*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:34:53 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 04:05:18 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 05:59:10 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,26 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-# define STDOUT 1
+typedef struct s_fmt_map
+{
+	char	fmt_char;
+	int		(*fmt_func)(va_list *);
+}			t_fmt_map;
 
-int		ft_printf(const char *format, ...);
+int			ft_printf(const char *format, ...);
 
-int		ft_putchar(va_list *args);
+int			ft_putchar(va_list *args);
 
-int		ft_putstr(va_list *args);
+int			ft_putstr(va_list *args);
 
-int		ft_print_int(va_list *args);
-int		ft_print_unsigned(va_list *args);
+int			ft_print_int(va_list *args);
+int			ft_print_unsigned(va_list *args);
 
-int		ft_print_pointer(va_list *args);
-int		ft_print_hex_lowercase(va_list *args);
-int		ft_print_hex_uppercase(va_list *args);
-int		ft_print_percent(va_list *args);
+int			ft_print_pointer(va_list *args);
+int			ft_print_hex_lowercase(va_list *args);
+int			ft_print_hex_uppercase(va_list *args);
 
-size_t	ft_strlen(const char *s);
+size_t		ft_strlen(const char *s);
+int			ft_print_percent(va_list *args);
 
 #endif
