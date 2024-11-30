@@ -6,7 +6,7 @@
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:35:28 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 00:53:42 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 05:12:09 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_format(const char *fmt, va_list *args)
 {
 	static int	(*fmt_func[])(va_list *) = {
 		&ft_putchar, &ft_putstr,
-		&ft_print_pointer, &ft_print_int, &ft_print_int, &ft_print_unsigned,
+		ft_print_pointer, &ft_print_int, &ft_print_int, &ft_print_unsigned,
 		&ft_print_hex_lowercase, &ft_print_hex_uppercase, &ft_print_percent
 	};
 	const char	p_fmt_chars[] = "cspdiuxX%";
@@ -35,20 +35,28 @@ static int	ft_format(const char *fmt, va_list *args)
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	size_t	count;
-	size_t	i;
-	
+	int		count;
+	int		ret;
+
 	count = 0;
-	i = 0;
 	va_start(args, format);
-	while (format[i])
+	while (*format)
 	{
-		if (format[i] == '%')
-			count += ft_format(&format[++i], &args);
+		if (*format == '%')
+		{
+			ret = ft_format(++format, &args);
+			if (ret == -1)
+				return (va_end(args), -1);
+			count += ret;
+		}
 		else
-			count += write(1, &format[i], 1);
-		i++;
+		{
+			ret = write(1, format, 1);
+			if (ret == -1)
+				return (va_end(args), -1);
+			count += ret;
+		}
+		format++;
 	}
-	va_end(args);
-	return (count);
+	return (va_end(args), count);
 }

@@ -8,12 +8,12 @@
       "-c",
       "-Iinclude",
       "-o",
-      "src/ft_printf.o",
+      "build/ft_printf.o",
       "src/ft_printf.c"
     ],
     "directory": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf",
     "file": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_printf.c",
-    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_printf.o"
+    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/build/ft_printf.o"
   },
   {
     "arguments": [
@@ -24,12 +24,12 @@
       "-c",
       "-Iinclude",
       "-o",
-      "src/ft_putchar.o",
+      "build/ft_putchar.o",
       "src/ft_putchar.c"
     ],
     "directory": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf",
     "file": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_putchar.c",
-    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_putchar.o"
+    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/build/ft_putchar.o"
   },
   {
     "arguments": [
@@ -40,12 +40,12 @@
       "-c",
       "-Iinclude",
       "-o",
-      "src/ft_putnbr.o",
+      "build/ft_putnbr.o",
       "src/ft_putnbr.c"
     ],
     "directory": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf",
     "file": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_putnbr.c",
-    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_putnbr.o"
+    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/build/ft_putnbr.o"
   },
   {
     "arguments": [
@@ -56,12 +56,12 @@
       "-c",
       "-Iinclude",
       "-o",
-      "src/ft_putnbr_base.o",
+      "build/ft_putnbr_base.o",
       "src/ft_putnbr_base.c"
     ],
     "directory": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf",
     "file": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_putnbr_base.c",
-    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_putnbr_base.o"
+    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/build/ft_putnbr_base.o"
   },
   {
     "arguments": [
@@ -72,12 +72,12 @@
       "-c",
       "-Iinclude",
       "-o",
-      "src/ft_putstr.o",
+      "build/ft_putstr.o",
       "src/ft_putstr.c"
     ],
     "directory": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf",
     "file": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_putstr.c",
-    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/ft_putstr.o"
+    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/build/ft_putstr.o"
   },
   {
     "arguments": [
@@ -88,11 +88,11 @@
       "-c",
       "-Iinclude",
       "-o",
-      "src/libft.o",
+      "build/libft.o",
       "src/libft.c"
     ],
     "directory": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf",
     "file": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/libft.c",
-    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/src/libft.o"
+    "output": "/Users/root1/Documents/Cプロジェクト/gitprintf/ft_printf/build/libft.o"
   }
 ]

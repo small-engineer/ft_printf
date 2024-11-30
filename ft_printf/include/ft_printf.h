@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:34:53 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 00:34:54 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 04:05:18 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+
+# define STDOUT 1
 
 int		ft_printf(const char *format, ...);
 

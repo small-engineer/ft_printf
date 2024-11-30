@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:36:55 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 00:38:38 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 04:41:51 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ int	ft_putnbr_base(unsigned long n, const char *base)
 	{
 		len += ft_putnbr_base(n / base_len, base);
 		c = base[n % base_len];
-		write(1, &c, 1);
+		if (write(1, &c, 1) == -1)
+			return (-1);
 		len++;
 	}
 	else
 	{
 		c = base[n];
-		write(1, &c, 1);
+		if (write(1, &c, 1) == -1)
+			return (-1);
 		len++;
 	}
 	return (len);
@@ -43,7 +45,8 @@ int	ft_print_pointer(va_list *args)
 
 	len = 0;
 	ptr = (unsigned long)va_arg(*args, void *);
-	write(1, "0x", 2);
+	if (write(1, "0x", 2) == -1)
+		return (-1);
 	len += 2 + ft_putnbr_base(ptr, "0123456789abcdef");
 	return (len);
 }
@@ -67,6 +70,7 @@ int	ft_print_hex_uppercase(va_list *args)
 int	ft_print_percent(va_list *args)
 {
 	(void)args;
-	write(1, "%", 1);
+	if (write(1, "%", 1) == -1)
+		return (-1);
 	return (1);
 }
