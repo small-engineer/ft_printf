@@ -24,35 +24,35 @@ int	ft_putnbr_base(unsigned long n, const char *base)
 	return (len);
 }
 
-int	ft_print_pointer(va_list args)
+int	ft_print_pointer(va_list *args)
 {
 	unsigned long	ptr;
 	int				len;
 
 	len = 0;
-	ptr = (unsigned long)va_arg(args, void *);
+	ptr = (unsigned long)va_arg(*args, void *);
 	write(1, "0x", 2);
 	len += 2 + ft_putnbr_base(ptr, "0123456789abcdef");
 	return (len);
 }
 
-int	ft_print_hex_lowercase(va_list args)
+int	ft_print_hex_lowercase(va_list *args)
 {
 	unsigned int	n;
 
-	n = va_arg(args, unsigned int);
+	n = va_arg(*args, unsigned int);
 	return (ft_putnbr_base(n, "0123456789abcdef"));
 }
 
-int	ft_print_hex_uppercase(va_list args)
+int	ft_print_hex_uppercase(va_list *args)
 {
 	unsigned int	n;
 
-	n = va_arg(args, unsigned int);
+	n = va_arg(*args, unsigned int);
 	return (ft_putnbr_base(n, "0123456789ABCDEF"));
 }
 
-int	ft_print_percent(va_list args)
+int	ft_print_percent(va_list *args)
 {
 	(void)args;
 	write(1, "%", 1);

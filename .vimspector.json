@@ -1,0 +1,17 @@
+{
+  "configurations": {
+    "C Debug": {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceFolder}/a.out",
+        "args": [],
+        "stopAtEntry": true,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false
+      }
+    }
+  }
+}
+
