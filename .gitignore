@@ -8,7 +8,6 @@ build/
 
 # コンパイル関連
 compile_commands.json
-Makefile
 .ccls-cache/
 
 # IDEやエディタの設定ファイル
