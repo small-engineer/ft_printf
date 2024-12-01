@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:07:55 by ywakamiy         ###   ########.fr       */
+/*   Created: 2024/10/25 14:16:34 by ywakamiy          #+#    #+#             */
+/*   Updated: 2024/10/25 16:06:01 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_print_percent(va_list *args)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
+	char	*ret;
+	size_t	s1_len;
+	size_t	s2_len;
+
+	if (!s1 || !s2)
+		return (NULL);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	ret = (char *)ft_calloc(s1_len + s2_len + 1, sizeof(char));
+	if (!ret)
+		return (NULL);
+	ft_strlcpy(ret, s1, s1_len + 1);
+	ft_strlcat(ret, s2, s1_len + s2_len + 1);
+	return (ret);
 }

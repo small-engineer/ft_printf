@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:07:55 by ywakamiy         ###   ########.fr       */
+/*   Created: 2024/10/23 16:35:18 by ywakamiy          #+#    #+#             */
+/*   Updated: 2024/10/23 22:15:40 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_print_percent(va_list *args)
+int	ft_isprint(int c)
 {
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
+	return (c >= 32 && 127 > c);
 }

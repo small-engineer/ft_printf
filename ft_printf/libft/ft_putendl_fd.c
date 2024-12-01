@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:07:55 by ywakamiy         ###   ########.fr       */
+/*   Created: 2024/10/27 06:16:52 by ywakamiy          #+#    #+#             */
+/*   Updated: 2024/10/29 03:07:17 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_print_percent(va_list *args)
+void	ft_putendl_fd(char *s, int fd)
 {
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }

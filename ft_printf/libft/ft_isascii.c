@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:07:55 by ywakamiy         ###   ########.fr       */
+/*   Created: 2024/10/23 13:56:24 by ywakamiy          #+#    #+#             */
+/*   Updated: 2024/10/27 04:44:06 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_print_percent(va_list *args)
+int	ft_isascii(int c)
 {
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
+	return ((c & ~127) == 0);
 }

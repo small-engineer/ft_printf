@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:07:55 by ywakamiy         ###   ########.fr       */
+/*   Created: 2024/10/27 06:45:01 by ywakamiy          #+#    #+#             */
+/*   Updated: 2024/10/29 02:53:04 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_print_percent(va_list *args)
+t_list	*ft_lstnew(void *content)
 {
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
+	t_list	*next_node;
+
+	next_node = (t_list *)ft_calloc(1, sizeof(t_list));
+	if (!next_node)
+		return (NULL);
+	next_node->content = content;
+	next_node->next = NULL;
+	return (next_node);
 }

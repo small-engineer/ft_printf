@@ -6,7 +6,7 @@
 /*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:34:53 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 05:59:10 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 10:30:10 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include "libft.h"
 
 typedef struct s_fmt_map
 {
@@ -35,7 +36,6 @@ int			ft_print_pointer(va_list *args);
 int			ft_print_hex_lowercase(va_list *args);
 int			ft_print_hex_uppercase(va_list *args);
 
-size_t		ft_strlen(const char *s);
 int			ft_print_percent(va_list *args);
 
 #endif

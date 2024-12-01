@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:07:55 by ywakamiy         ###   ########.fr       */
+/*   Created: 2024/10/29 04:27:52 by ywakamiy          #+#    #+#             */
+/*   Updated: 2024/10/29 10:28:13 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_print_percent(va_list *args)
+static int	ft_isspace(int c)
 {
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
+	return (c == ' ' || (c >= '\t' && c <= '\r'));
+}
+
+int	ft_atoi(const char *str)
+{
+	int		total;
+	bool	sign;
+
+	total = 0;
+	sign = false;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
+	{
+		sign = true;
+		str++;
+	}
+	while (ft_isdigit(*str))
+		total = total * 10 + (*str++ - '0');
+	if (sign)
+		return (-total);
+	return (total);
 }

@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:07:55 by ywakamiy         ###   ########.fr       */
+/*   Created: 2024/10/25 10:40:45 by ywakamiy          #+#    #+#             */
+/*   Updated: 2024/10/25 12:15:43 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_print_percent(va_list *args)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
+	size_t	n_len;
+
+	if (!*needle)
+		return ((char *)haystack);
+	n_len = ft_strlen(needle);
+	while (len > 0 && *haystack)
+	{
+		if (*haystack == *needle)
+			if (n_len <= len && ft_strncmp(haystack, needle, n_len) == 0)
+				return ((char *)haystack);
+		haystack++;
+		len--;
+	}
+	return (NULL);
 }

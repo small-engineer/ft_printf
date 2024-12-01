@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:37:26 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:07:55 by ywakamiy         ###   ########.fr       */
+/*   Created: 2024/10/27 00:22:00 by ywakamiy          #+#    #+#             */
+/*   Updated: 2024/10/27 00:37:38 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "ft_printf.h"
-
-int	ft_print_percent(va_list *args)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	(void)args;
-	if (write(1, "%", 1) == -1)
-		return (-1);
-	return (1);
+	unsigned int	i;
+	size_t			len;
+	char			*str;
+	const char		*p_s = s;
+	char			*p_str;
+
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	p_str = str;
+	i = 0;
+	while (*p_s)
+		*p_str++ = (*f)(i++, *p_s++);
+	return (str);
 }
