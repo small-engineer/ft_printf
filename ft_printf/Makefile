@@ -6,7 +6,7 @@
 #    By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/30 23:44:57 by ywakamiy          #+#    #+#              #
-#    Updated: 2024/12/01 03:56:48 by ywakamiy         ###   ########.fr        #
+#    Updated: 2024/12/01 09:02:25 by ywakamiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = $(SRC_DIR)/ft_printf.c \
        $(SRC_DIR)/ft_putnbr.c \
        $(SRC_DIR)/ft_putnbr_base.c \
        $(SRC_DIR)/ft_putstr.c \
-       $(SRC_DIR)/libft.c
+       $(SRC_DIR)/help.c
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 INCL = -I$(INCL_DIR)
 

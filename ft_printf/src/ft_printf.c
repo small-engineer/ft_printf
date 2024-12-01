@@ -6,13 +6,13 @@
 /*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:35:28 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 08:44:25 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/01 09:23:10 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_format(const char *fmt, va_list *args)
+static int	ft_fmt(const char *fmt, va_list *args)
 {
 	int					i;
 	static t_fmt_map	fmt_map[] = {
@@ -35,31 +35,31 @@ static int	ft_format(const char *fmt, va_list *args)
 	return (write(1, fmt, 1));
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	va_list	args;
 	int		count;
 	int		ret;
 
 	count = 0;
-	va_start(args, format);
-	while (*format)
+	va_start(args, fmt);
+	while (*fmt)
 	{
-		if (*format == '%')
+		if (*fmt == '%')
 		{
-			ret = ft_format(++format, &args);
+			ret = ft_fmt(++fmt, &args);
 			if (ret == -1)
 				return (va_end(args), -1);
 			count += ret;
 		}
 		else
 		{
-			ret = write(1, format, 1);
+			ret = write(1, fmt, 1);
 			if (ret == -1)
 				return (va_end(args), -1);
 			count += ret;
 		}
-		format++;
+		fmt++;
 	}
 	return (va_end(args), count);
 }
