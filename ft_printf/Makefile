@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ywakamiy <ywakamiy@student.42tokyo.jp>     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/30 23:44:57 by ywakamiy          #+#    #+#              #
-#    Updated: 2024/12/01 10:25:47 by ywakamiy         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -29,29 +17,42 @@ SRCS = $(SRC_DIR)/ft_printf.c \
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 INCL = -I$(INCL_DIR) -I$(LIBFT_DIR)
 
+# Colors
+RESET = \033[0m
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+BLUE = \033[1;34m
+RED = \033[1;31m
+
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-		ar rcs $(NAME) $(OBJS)
-		ar rcs $(NAME) $(LIBFT_DIR)/*.o
+	@echo "$(GREEN)[BUILD] Creating archive: $(NAME)$(RESET)"
+	@ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(LIBFT_DIR)/*.o
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(INCL_DIR)/ft_printf.h
-		mkdir -p $(BUILD_DIR)
-		$(CC) $(CFLAGS) -c $< -o $@ $(INCL)
+	@echo "$(BLUE)[BUILD] Compiling: $<$(RESET)"
+	@mkdir -p $(BUILD_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCL)
 
 $(LIBFT):
-		$(MAKE) -C $(LIBFT_DIR)
+	@echo "$(YELLOW)[BUILD] Building libft$(RESET)"
+	@$(MAKE) -C $(LIBFT_DIR) > /dev/null 2>&1
 
 debug: CFLAGS += $(DEBUG_FLAGS)
 debug: re
 
 clean:
-		rm -rf $(BUILD_DIR)
-		$(MAKE) -C $(LIBFT_DIR) clean
+	@echo "$(RED)[CLEAN] Removing build directory$(RESET)"
+	@rm -rf $(BUILD_DIR)
+	@echo "$(RED)[CLEAN] Cleaning libft$(RESET)"
+	@$(MAKE) -C $(LIBFT_DIR) clean > /dev/null 2>&1
 
 fclean: clean
-		rm -f $(NAME)
-		$(MAKE) -C $(LIBFT_DIR) fclean
+	@echo "$(RED)[FCLEAN] Removing $(NAME)$(RESET)"
+	@rm -f $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean > /dev/null 2>&1
 
 re: fclean all
 
