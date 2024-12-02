@@ -6,7 +6,7 @@
 /*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:34:53 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 10:30:10 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/03 03:42:57 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_fmt_map
 	int		(*fmt_func)(va_list *);
 }			t_fmt_map;
 
-int			ft_printf(const char *format, ...);
+int			ft_printf(const char *fmt, ...);
 
 int			ft_putchar(va_list *args);
 
