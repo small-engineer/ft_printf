@@ -6,7 +6,7 @@
 /*   By: ywakamiy <ywakamiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:36:55 by ywakamiy          #+#    #+#             */
-/*   Updated: 2024/12/01 06:01:19 by ywakamiy         ###   ########.fr       */
+/*   Updated: 2024/12/03 03:00:34 by ywakamiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ int	ft_print_pointer(va_list *args)
 
 	len = 0;
 	p = (unsigned long)va_arg(*args, void *);
+	if (p == 0)
+	{
+		if (write(1, "(nil)", 5) == -1)
+			return (-1);
+		return (5);
+	}
 	if (write(1, "0x", 2) == -1)
 		return (-1);
 	len += 2 + ft_putnbr_base(p, "0123456789abcdef");
